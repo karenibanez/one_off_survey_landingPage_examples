@@ -1,0 +1,786 @@
+
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta name="viewport" content="width=device-width">
+<title>Untitled Document</title>
+<script type="text/javascript" src="http://f.chtah.com/s/4/2075755180/jquery-1.4.2.js"></SCRIPT>
+	<script type="text/javascript">
+	
+	
+	
+		$(document).ready(function(){
+			$('li.drawer ul').hide();
+			/*Added content-toggle class to all 3 headers*/
+			$('h2.content-toggle').click(function(){
+				$(this).next().slideToggle(0);
+			});
+			
+		});
+		
+		
+		$.preloadImages(['http://f.chtah.com/s/4/2075755180/082411_prefpg_m3_music.gif', 'http://f.chtah.com/s/4/2075755180/082411_prefpg_m3_music_on.gif', 'http://f.chtah.com/s/4/2075755180/082411_prefpg_m3_talk.gif', 'http://f.chtah.com/s/4/2075755180/082411_prefpg_m3_talk_on.gif', 'http://f.chtah.com/s/4/2075755180/082411_prefpg_m3_sports.gif', 'http://f.chtah.com/s/4/2075755180/082411_prefpg_m3_sports_on.gif']);
+		
+	</SCRIPT>
+<script type="text/javascript"> 
+ 
+function calsum(tinp) {
+  var len = tinp.length;
+  var tval = 0;
+  if (typeof(len) != "undefined") {
+    for (var i = 0; i < len; i++) {
+      if (tinp[i].checked) {
+        tval += Math.pow(2,parseInt(tinp[i].value,10));
+      }  
+    }
+  }
+  else {
+    if (tinp.checked) {
+        tval += Math.pow(2,parseInt(tinp.value,10));
+    }
+  }
+  return tval;
+}
+ 
+ 
+	var emailRegEx = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-\+])+\.)+([a-zA-Z0-9]{2,4})+$/;
+function getDom(name)
+{
+ if (document.getElementById)
+ {
+ 	this.obj = document.getElementById(name);
+	 this.style = document.getElementById(name).style;
+ }
+ else if (document.all)
+ {
+	this.obj = document.all[name];
+	this.style = document.all[name].style;
+ }
+ else if (document.layers)
+ {
+  	this.obj = document.layers[name];
+  	this.style = document.layers[name];
+ }
+}
+function returnval(tinp) {
+  var len = tinp.length;
+  if (typeof(len) != "undefined") {
+    for (var i = 0; i < len; i++) {
+      if (tinp[i].checked) {
+        return tinp[i].value;  
+      }  
+    }
+  }
+  else {
+    if (tinp.checked) {
+        return tinp.value;  
+    }
+  }
+  return false;
+}
+function setvisible(object, mode) {
+ var mobject = new getDom(object);
+ if (mode == 'hide') {
+  mobject.style.visibility = 'hidden';
+  mobject.style.display = 'none';
+ }
+ else {
+  mobject.style.visibility = 'visible';
+  	mobject.style.display = 'block';
+ }
+}
+function checkMax(minput,maxcount,dv) {
+  var count = 0;
+  var notmax = true;
+  setvisible(dv,'hide');
+  for (var i = 0; i < minput.length; i++) {
+    if (minput[i].checked) {
+      count++;  
+    }  
+  }
+  if (count > maxcount) {
+    notmax = false;
+    setvisible(dv,'show');
+  }
+ 
+  return notmax;
+}
+ 
+function setval (mform) {
+	var isval = true;
+ 
+	var phone1;
+	var phone2;
+	var phone3;
+	
+	for (var i = 0; i < mform.length; i++) {
+		switch(mform[i].name) {
+			case 'PHONE.0':
+				phone1 = mform[i];
+			break;
+			case 'PHONE.1':
+				phone2 = mform[i];
+			break;
+			case 'PHONE.2':
+				phone3 = mform[i];
+			break;
+		}
+	}
+	if (!mform.FNAME.value || !mform.LNAME.value) {
+		isval = false;
+		setvisible('err_fname','show');
+	}
+	else {
+		setvisible('err_fname','hide');
+	}
+	if (!mform.email.value || !mform.email.value.match(emailRegEx)) {
+		isval = false;
+		setvisible('err_email','show');
+	}
+	else {
+		setvisible('err_email','hide');
+	}
+	if ((!phone1.value || !phone1.value.match(/^\d{3}$/))
+	|| (!phone2.value || !phone2.value.match(/^\d{3}$/))
+	|| (!phone3.value || !phone3.value.match(/^\d{4}$/))
+	) {
+		//isval = false;
+		//setvisible('err_phone','show');
+	}
+	else {
+		setvisible('err_phone','hide');
+	}
+	
+	if (isval ) {
+		mform.MUSIC_SUM.value = calsum(mform.PREF_MUSIC);
+		mform.TALK_SUM.value = calsum(mform.PREF_TALK);
+		mform.SPORTS_SUM.value = calsum(mform.PREF_SPORTS);
+		var bnd = returnval(mform.BRAND);
+		if (bnd == 'XM') {
+			for (var i = 0; i < mform.length; i++) {
+				switch(mform[i].name) {
+					case 'PREF_MUSIC':
+						mform[i].name = 'PREF_MUSIC_XM';
+					break;
+					case 'PREF_TALK':
+						mform[i].name = 'PREF_TALK_XM';
+					break;
+					case 'PREF_SPORTS':
+						mform[i].name = 'PREF_SPORTS_XM';
+					break;
+					case 'f':
+						var prefsub = mform[i].value.substr(0,9);
+						if (prefsub == 'PREF_MUSI') {
+							mform[i].value = 'PREF_MUSIC_XM||||bit|';
+						}
+						else if(prefsub == 'PREF_TALK') {
+							mform[i].value = 'PREF_TALK_XM||||bit|';
+						}							
+						else if(prefsub == 'PREF_SPOR') {
+							mform[i].value = 'PREF_SPORTS_XM||||bit|';
+						}
+					break;
+				}
+			}
+			mform.fsub.value = '2078209107|2078209110';
+ 
+ 
+		}
+		else {
+			mform.fsub.value = '2072090079|2072090081';
+		}
+	}
+	return isval;
+	
+}
+</SCRIPT>
+<style type="text/css">
+
+/* Reset */
+ *{  
+    margin:0;
+    padding:0;
+    border-width:0;
+ }
+
+
+
+
+
+
+
+/* General styles  */
+body {
+    color: #696969;
+    background-color: #014076;
+    margin: 20px 0; /* 20px 0 */
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 13px;
+	line-height:normal;
+	width: 320px;
+	margin-left: auto;
+    margin-right: auto;
+}
+
+img {
+
+	display:block;
+	
+}
+
+h1 {
+
+	font-weight:bold;
+	font-size: 13px;
+	padding: 0 0 17px 44px;
+}
+
+h2 {
+
+	color: #ab231f;
+	font-weight:bold;
+	font-size: 13px;	
+}
+
+input[type="text"] {
+	
+
+	width: 158px;
+	height: 22px;
+	margin: 6px 0 16px 0;
+	border: 1px solid #ccc;
+	
+}
+
+
+
+input[type="radio"] {
+	
+
+	padding: 0 7px 0 12px;
+	
+}
+
+input[type="image"] {
+	
+
+	padding: 13px 51px 0 63px;
+	
+}
+
+
+
+label {
+
+	padding: 0 16px 0 0;
+	
+}
+
+p {
+
+	padding-bottom: 12px;
+	
+}
+
+
+/* main content */
+#wrapper {
+	
+   width: 320px;
+   float: left;
+   
+}
+
+
+
+
+#content {
+	
+	width: 320px;
+}
+
+#content textarea {
+	
+
+	width: 475px;
+	height: 45px;
+	margin-top: 6px;
+	border: 1px solid #ccc;
+	
+}
+
+
+
+#content .indent {
+
+	padding: 0 0 0 67px;
+	margin: 0;
+	
+	
+}
+
+#content .submit{
+
+	border: none;
+	margin-top: 24px;
+	
+	
+}
+
+
+#content p.question {
+
+	padding: 0 0 28px 46px;
+	
+}
+
+#content .normal {
+	
+	font-weight: normal;	
+}
+
+#content .col1 {
+	
+		
+		float: left;
+		clear: none;
+		margin: 0 0 44px 46px;
+	
+}
+
+#content .col2 {
+	
+		
+		width: 150px;
+		float: left;
+		clear: none;
+		margin: 0 0 44px 23px;
+	
+}
+
+#content label {
+	
+	
+		float: none;
+	
+}
+
+
+#content .col3 {
+	
+		
+		float: left;
+		clear: none;
+		margin: 0 0 44px 46px;
+		vertical-align: text-top;
+	
+}
+
+#content .col4 {
+	
+		
+		width: 150px;
+		float: left;
+		clear: none;
+		margin: 0 0 44px 23px;
+		vertical-align: text-top;
+	
+}
+
+#content .row {
+	
+
+	height: 25px;
+	
+	
+}
+
+#footer {
+	
+
+	text-align:center;
+	color:#fff;
+	
+}
+
+#footer a {
+
+	color: #0fa6fa;
+	text-decoration:none;
+	
+}
+
+<!--button images are here-->
+
+.drawers ul { list-style:none; }
+
+.drawers li { list-style:none; width:320px; }
+		.drawer-handle { cursor:pointer; color:#fff; 
+			background:url('http://f.chtah.com/s/4/2075755180/082411_prefpg_m3_music.gif') top left no-repeat; 
+			width:320px; height: 47px;}
+		.active { background-image:url('http://f.chtah.com/s/4/2075755180/082411_prefpg_m3_music_on.gif');}
+		
+		.drawer-handle2 { cursor:pointer; color:#fff; 
+			background:url('http://f.chtah.com/s/4/2075755180/082411_prefpg_m3_talk.gif') top left no-repeat; 
+			width:320px; height: 47px; }
+		.active2 { background-image:url('http://f.chtah.com/s/4/2075755180/082411_prefpg_m3_talk_on.gif');}
+		
+		.drawer-handle3 { cursor:pointer; color:#fff; 
+			background:url('http://f.chtah.com/s/4/2075755180/082411_prefpg_m3_sports.gif') top left no-repeat; 
+			width:320px; height: 47px; padding-bottom:4px; }
+		.active3 { background-image:url('http://f.chtah.com/s/4/2075755180/082411_prefpg_m3_sports_on.gif');}
+
+
+			
+.frm_top {
+
+	width: 307px;
+	height:20px;
+	margin: 0 7px 0 5px;
+	border-right: 1px solid #a5b5c4;
+	background-color: #e7e7e7;
+	color:#fff;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	font-weight: bold;
+	
+}
+
+.pbx {
+	
+
+	width: 160px;
+	height: 20px;
+	padding: 5px 0 6px 0;
+	background-color: #9700b1;
+	text-align:center;
+	vertical-align:middle;
+	
+}
+
+.frm_intro{
+
+	width: 249px;
+	height:60px;
+	margin: 0 7px 0 5px;
+	padding: 10px 33px 10px 24px;
+	border-left: 1px solid #a5b5c4;
+	border-right: 1px solid #a5b5c4;
+	background-color: #e7e7e7;
+	color:#808080;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	font-weight: bold;
+	
+}
+
+.frm_intro2{
+
+	width: 249px;
+	height:20px;
+	margin: 0 7px 0 5px;
+	padding: 11px 33px 10px 24px;
+	border-left: 1px solid #a5b5c4;
+	border-right: 1px solid #a5b5c4;
+	background-color: #e7e7e7;
+	color:#808080;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	font-weight: bold;
+}
+
+.b_frm{
+
+	background-color:#f1f1f1;
+	width: 252px;
+	height:335px;
+	margin: 0 7px 0 5px;
+	padding: 19px 30px 0 24px;
+	border-left: 1px solid #a5b5c4;
+	border-right: 1px solid #a5b5c4;
+	color:#808080;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	font-weight: bold;
+}
+
+.b_frm1{
+
+	background-color:#f1f1f1;
+	width: 252px;
+	/*
+	height: 250px;
+	overflow-y: scroll;
+	*/
+	overflow-x: hidden;
+	-webkit-overflow-scrolling: touch;
+	margin: 0 7px 0 5px;
+	padding: 19px 30px 0 24px;
+	border-left: 1px solid #a5b5c4;
+	border-right: 1px solid #a5b5c4;
+	color:#808080;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	font-weight: bold;
+	
+}
+
+.b_frm2{
+
+	background-color:#f1f1f1;
+	width: 252px;
+	/*
+	height: 250px;
+	overflow-y: scroll;
+	*/
+	overflow-x: hidden;
+	-webkit-overflow-scrolling: touch;
+	margin: 0 7px 0 5px;
+	padding: 19px 30px 0 24px;
+	border-left: 1px solid #a5b5c4;
+	border-right: 1px solid #a5b5c4;
+	color:#808080;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	font-weight: bold;
+}
+
+.b_frm3{
+
+	background-color:#f1f1f1;
+	width: 252px;
+	/*
+	height: 250px;
+	overflow-y: scroll;
+	*/
+	overflow-x: hidden;
+	-webkit-overflow-scrolling: touch;
+	margin: 0 7px 0 5px;
+	padding: 19px 30px 0 24px;
+	border-left: 1px solid #a5b5c4;
+	border-right: 1px solid #a5b5c4;
+	color:#808080;
+	font-family:Arial, Helvetica, sans-serif;
+	font-size:12px;
+	font-weight: bold;	
+}
+
+.b_frm_bot {padding-bottom:8px;}
+
+
+</style>
+</head>
+
+<body>
+<form name="siriusform" method="POST" action="http://ebm.cheetahmail.com/r/regf2" onSubmit="return setval(this);">
+
+<input value="2075755180" name="aid" type="hidden">
+<input value="105" name="n" type="hidden">
+<input value="1" name="a" type="hidden">
+<input value="2072090079|2072090081" name="fsub" type="hidden">
+<input value="" name="PREF_MOST" type="hidden">
+<input value="" name="MUSIC_SUM" type="hidden">
+<input value="" name="TALK_SUM" type="hidden">
+<input value="" name="SPORTS_SUM" type="hidden">
+<input value="PREF_MUSIC||||bit|" name="f" type="hidden">
+<input value="PREF_TALK||||bit|" name="f" type="hidden">
+<input value="PREF_SPORTS||||bit|" name="f" type="hidden">
+<input value="PHONE|0|10|\9||Please enter a correct 10 digit phone number (ex. 1112223333)" name="f" type="hidden">
+
+<div id="wrapper"><!--end wrapper--></div>
+<div id="content"> 
+<img src="http://f.chtah.com/s/4/2075755180/082411_prefpg_m3_hdr.gif" width="320" height="103" alt=""> 
+<img src="http://f.chtah.com/s/4/2075755180/082411_prefpg_m3_cat.gif" width="320" height="52" alt="">
+  <ul class="drawers">
+    <li class="drawer">
+      <h2 class="drawer-handle content-toggle"></h2>
+      <ul>
+        <li>
+          <!--music start-->
+          
+          
+           <div class="frm_intro2">
+  
+  Select all that apply
+  
+  </div>
+  
+  <div class="b_frm1">
+  
+  
+
+  
+<p><input tabindex="1" value="0" name="PREF_MUSIC" id="50_60" onclick="return checkMax(document.siriusform.PREF_MUSIC,7,'err_music');" type="checkbox"> '50s and '60s Hits </p>
+<p><input tabindex="2" value="9" name="PREF_MUSIC" id="70_80_90" onclick="return checkMax(document.siriusform.PREF_MUSIC,7,'err_music');" type="checkbox"> '70s, '80s and '90s Pop </p>
+<p><input tabindex="3" value="3" name="PREF_MUSIC" id="indie" onclick="return checkMax(document.siriusform.PREF_MUSIC,7,'err_music');" type="checkbox"> Alternative / Indie </p>
+<p><input tabindex="4" value="17" name="PREF_MUSIC" id="bluegrass" onclick="return checkMax(document.siriusform.PREF_MUSIC,7,'err_music');" type="checkbox"> Bluegrass </p>
+<p><input tabindex="5" value="14" name="PREF_MUSIC" id="blues" onclick="return checkMax(document.siriusform.PREF_MUSIC,7,'err_music');" type="checkbox"> Blues </p>
+<p><input tabindex="6" value="18" name="PREF_MUSIC" id="christian" onclick="return checkMax(document.siriusform.PREF_MUSIC,7,'err_music');" type="checkbox"> Christian / Gospel </p>
+<p><input tabindex="7" value="4" name="PREF_MUSIC" id="punk" onclick="return checkMax(document.siriusform.PREF_MUSIC,7,'err_music');" type="checkbox"> Classic Alternative / Punk Rock </p>
+<p><input tabindex="8" value="16" name="PREF_MUSIC" id="country" onclick="return checkMax(document.siriusform.PREF_MUSIC,7,'err_music');" type="checkbox"> Classic Country </p>
+<p><input tabindex="9" value="1" name="PREF_MUSIC" id="rock" onclick="return checkMax(document.siriusform.PREF_MUSIC,7,'err_music');" type="checkbox"> Classic Rock </p>
+<p><input tabindex="10" value="12" name="PREF_MUSIC" id="classical" onclick="return checkMax(document.siriusform.PREF_MUSIC,7,'err_music');" type="checkbox"> Classical / Opera </p>
+<p><input tabindex="11" value="8" name="PREF_MUSIC" id="current_hits" onclick="return checkMax(document.siriusform.PREF_MUSIC,7,'err_music');" type="checkbox"> Current Hits </p>
+<p><input tabindex="12" value="10" name="PREF_MUSIC" id="easy" onclick="return checkMax(document.siriusform.PREF_MUSIC,7,'err_music');" type="checkbox"> Easy Listening / Lite Pop </p>
+<p><input tabindex="13" value="21" name="PREF_MUSIC" id="electronic" onclick="return checkMax(document.siriusform.PREF_MUSIC,7,'err_music');" type="checkbox"> Electronic / Dance </p>
+<p><input tabindex="14" value="2" name="PREF_MUSIC" id="metal" onclick="return checkMax(document.siriusform.PREF_MUSIC,7,'err_music');" type="checkbox"> Hard Rock / Metal </p>
+<p><input tabindex="15" value="19" name="PREF_MUSIC" id="hip_hop" onclick="return checkMax(document.siriusform.PREF_MUSIC,7,'err_music');" type="checkbox"> Hip-Hop </p>
+<p><input tabindex="17" value="6" name="PREF_MUSIC" id="jam_bands" onclick="return checkMax(document.siriusform.PREF_MUSIC,7,'err_music');" type="checkbox"> Jam Bands / Grateful Dead </p>
+<p><input tabindex="18" value="13" name="PREF_MUSIC" id="jazz" onclick="return checkMax(document.siriusform.PREF_MUSIC,7,'err_music');" type="checkbox"> Jazz </p>
+<p><input tabindex="16" value="22" name="PREF_MUSIC" id="hispanic" onclick="return checkMax(document.siriusform.PREF_MUSIC,7,'err_music');" type="checkbox"> Latin </p>
+<p><input tabindex="19" value="15" name="PREF_MUSIC" id="new_country" onclick="return checkMax(document.siriusform.PREF_MUSIC,7,'err_music');" type="checkbox"> New Country </p>
+<p><input tabindex="20" value="23" name="PREF_MUSIC" id="new_rock" onclick="return checkMax(document.siriusform.PREF_MUSIC,7,'err_music');" type="checkbox"> New Adult Rock </p>
+<p><input tabindex="21" value="20" name="PREF_MUSIC" id="rb" onclick="return checkMax(document.siriusform.PREF_MUSIC,7,'err_music');" type="checkbox"> R&B </p>
+<p><input tabindex="22" value="7" name="PREF_MUSIC" id="reggae" onclick="return checkMax(document.siriusform.PREF_MUSIC,7,'err_music');" type="checkbox"> Reggae / Island / Jimmy Buffett </p>
+<p><input tabindex="23" value="5" name="PREF_MUSIC" id="acoustic" onclick="return checkMax(document.siriusform.PREF_MUSIC,7,'err_music');" type="checkbox"> Singer / Songwriter / Acoustic </p>
+<p><input tabindex="24" value="11" name="PREF_MUSIC" id="big_band" onclick="return checkMax(document.siriusform.PREF_MUSIC,7,'err_music');" type="checkbox"> Standards, Showtunes & Big Band
+
+  </div>
+    <img src="http://f.chtah.com/s/4/2075755180/082411_prefpg_m3_bot.gif" width="320" height="25" alt="">      
+          <!--music end-->
+        </li>
+      </ul>
+      <h2 class="drawer-handle2 content-toggle"></h2>
+      <ul>
+        <li>
+          <!--talk start-->
+          
+          
+           <div class="frm_intro2">
+  
+  Select all that apply
+  
+  </div>
+  
+  <div class="b_frm2">
+  
+  
+  	<p><input tabindex="25" value="3" name="PREF_TALK" id="entertainment" type="checkbox"> Entertainment, Gossip, Sex &amp; Relationships</p>
+    <p><input tabindex="26" value="1" name="PREF_TALK" id="family" type="checkbox"> Family Friendly</p>
+    <p><input tabindex="27" value="9" name="PREF_TALK" id="gay" type="checkbox"> Gay / Lesbian Entertainment &amp; Issues</p>
+    <p><input tabindex="28" value="4" name="PREF_TALK" id="guy_talk" type="checkbox"> Guy Talk</p>
+    <p><input tabindex="29" value="10" name="PREF_TALK" id="howard_stern" type="checkbox"> Howard Stern</p>
+    <p><input tabindex="30" value="2" name="PREF_TALK" id="news" type="checkbox"> News</p>
+    <p><input tabindex="31" value="7" name="PREF_TALK" id="politics" type="checkbox">  Political Issues / Talk</p>
+    <p><input tabindex="32" value="6" name="PREF_TALK" id="religion" type="checkbox">  Religion</p>
+    <p><input tabindex="33" value="8" name="PREF_TALK" id="truckers" type="checkbox"> Talk for Truckers</p>
+    <p><input tabindex="34" value="0" name="PREF_TALK" id="comedy" type="checkbox">  Uncensored Comedy
+    <p><input tabindex="35" value="5" name="PREF_TALK" id="home" type="checkbox"> Women's Talk (incl. Home &amp; Health)</p>
+  
+  
+  </div>
+    <img src="http://f.chtah.com/s/4/2075755180/082411_prefpg_m3_bot.gif" width="320" height="25" alt="">      
+          <!--talk end-->
+        </li>
+      </ul>
+      <h2 class="drawer-handle3 content-toggle"></h2>
+      <ul>
+        <li>
+          <!--sports start-->
+          
+          
+           <div class="frm_intro2">
+  
+  Select all that apply
+  
+  </div>
+  
+  <div class="b_frm3">
+
+<p><input tabindex="36" value="9" name="PREF_SPORTS" id="boxing" type="checkbox"> Boxing </p>
+<p><input tabindex="37" value="6" name="PREF_SPORTS" id="cBasketball" type="checkbox"> College Basketball </p>
+<p><input tabindex="38" value="7" name="PREF_SPORTS" id="cFootball" type="checkbox"> College Football </p>
+<p><input tabindex="39" value="10" name="PREF_SPORTS" id="horse" type="checkbox"> Horse Racing </p>
+<p><input tabindex="40" value="12" name="PREF_SPORTS" id="racing" type="checkbox"> IndyCar Series, ALMS, and F1  Auto Racing </p>
+<p><input tabindex="41" value="11" name="PREF_SPORTS" id="martial_arts" type="checkbox"> Mixed Martial Arts </p>
+<p><input tabindex="42" value="1" name="PREF_SPORTS" id="mlb" type="checkbox"> MLB </p>
+<p><input tabindex="43" value="4" name="PREF_SPORTS" id="nascar" type="checkbox"> Nascar&reg; </p>
+<p><input tabindex="44" value="2" name="PREF_SPORTS" id="nba" type="checkbox"> NBA </p>
+<p><input tabindex="45" value="0" name="PREF_SPORTS" id="nfl" type="checkbox"> NFL </p>
+<p><input tabindex="46" value="3" name="PREF_SPORTS" id="nhl" type="checkbox"> NHL </p>
+<p><input tabindex="47" value="5" name="PREF_SPORTS" id="pga" type="checkbox"> PGA TOUR </p>
+<p><input tabindex="48" value="8" name="PREF_SPORTS" id="soccer" type="checkbox"> Soccer 
+  
+  </div>
+    <img src="http://f.chtah.com/s/4/2075755180/082411_prefpg_m3_bot.gif" width="320" height="25" alt="" class="b_frm_bot">   
+          <!--sports end-->
+        </li>
+      </ul>
+    </li>
+  </ul>
+  
+
+  
+  <img src="http://f.chtah.com/s/4/2075755180/082411_prefpg_m3_top.gif" width="320" height="20" alt="">
+  <div class="frm_top">
+    <div class="pbx"> You're almost there </div>
+  </div>
+  
+  <div class="frm_intro">
+  
+  Now that you've selected your listening 
+preferences from the above categories, just tell
+us who you are.
+  
+  </div>
+  
+  <div class="b_frm">
+  
+  First name*<br>
+  
+  <input tabindex="49" value="" name="FNAME" class="infoF" id="f_name" type="text"><br>
+  
+  Last name*<br>
+  
+  <input tabindex="50" value="" name="LNAME" class="infoL" id="l_name" type="text"><br>
+  
+  Email*<br>
+  <input tabindex="54" value="" name="email" class="infoE" id="email" type="text"><br>
+  
+  
+  Subscribe to*<br><br>
+  <input checked="checked" tabindex="55" value="SIRIUS" name="BRAND" id="Sirius" type="radio"> <label for="sirius">Sirius</label>
+  
+  <input tabindex="56" value="XM" name="BRAND" id="XM" type="radio"> <label for="xm">XM</label> 
+  
+  <input tabindex="57" value="SIRIUS" name="BRAND" id="Neither" type="radio"> <label for="neither">Neither</label> 
+  
+  <input width="138" alt="Submit" value="Submit" src="http://f.chtah.com/s/4/2075755180/082411_prefpg_m3_submit.gif" name="Submit" type="image" height="48">
+  
+  </div>
+  
+  <img src="http://f.chtah.com/s/4/2075755180/082411_prefpg_m3_bot.gif" width="320" height="25" alt="">
+  <!--end content-->
+</div>
+<div id="footer">
+<style>
+.ui-footer-white {
+	color: white;
+font-size: .9em;
+font-weight: bold;
+}
+</style>
+  <a href="http://www.siriusxm.com/pdf/siriusxm_customeragreement_eng.pdf"><span class="ui-footer-white">Customer Agreement &amp; Website Terms of Use</span></a><br>
+<a href="http://www.siriusxm.com/pdf/siriusxm_privacypolicy_eng.pdf"><span class="ui-footer-white">    Our Commitment to Privacy</span></a><br>
+ Mobile View | <a href="http://ebm.cheetahmail.com/r/regf2?aid=2075755180&n=103&a=0">Full Site</a><br>
+  &copy; 2012 Sirius XM Radio Inc.<br>
+
+  <!--end footer-->
+</div>
+</form>
+<div id="err_fname" style="z-index:3;top:1115px; left:305px; position: absolute;display:none;">
+<div style="width: 250px; height: 20px; background: url(http://f.chtah.com/i/18/2078130866/2011_pbg.gif);color: #FFFFFF;padding: 5px 5px 0px 5px;">	Oops! Please enter your first and last name</div><img src="http://f.chtah.com/i/18/2078130866/2011_da.gif" />
+</div>
+<div id="err_email" style="z-index:2;top:1180px; left:305px; position: absolute;display:none;">
+<div style="width: 250px; height: 20px; background: url(http://f.chtah.com/i/18/2078130866/2011_pbg.gif);color: #FFFFFF;padding: 5px 5px 0px 5px;">Oops! Please enter a valid email address</div><img src="http://f.chtah.com/i/18/2078130866/2011_da.gif" />
+</div>
+<div id="err_phone" style="z-index:4;top:1115px; left:650px; position: absolute;display:none;">
+<div style="width: 250px; height: 20px; background: url(http://f.chtah.com/i/18/2078130866/2011_pbg.gif);color: #FFFFFF;padding: 5px 5px 0px 5px;">Oops! Please enter your phone number</div><img src="http://f.chtah.com/i/18/2078130866/2011_da.gif" />
+</div>
+
+<div id="err_music" style="z-index:2;top:105px; left:305px; position: absolute;display:none;display:none;">
+<div style="width: 300px; height: 20px; background: url(http://f.chtah.com/i/18/2078130866/2011_pbg.gif);color: #FFFFFF;padding: 5px 5px 0px 5px;">Oops! You can only select 7 music preferences</div><img src="http://f.chtah.com/i/18/2078130866/2011_da.gif" />
+</div>
+</body>
+</html>

@@ -1,0 +1,488 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Untitled Document</title>
+<style type="text/css">
+
+/* Reset */
+ *{  
+    margin:0;
+    padding:0;
+    border-width:0;
+ }
+
+
+
+
+
+
+
+/* General styles  */
+body {
+    color: #696969;
+    background-color: #fff;
+    margin: 20px 0; /* 20px 0 */
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 13px;
+	line-height:normal;
+	width: 721px;
+	margin-left: auto;
+    margin-right: auto;
+}
+
+img {
+
+	display:block;
+	
+}
+
+h1 {
+
+	font-weight:bold;
+	font-size: 13px;
+	padding: 0 0 17px 44px;
+}
+
+h2 {
+
+	color: #ab231f;
+	font-weight:bold;
+	font-size: 13px;	
+}
+
+input[type="text"] {
+	
+
+	width: 224px;
+	height: 22px;
+	margin: 6px 0 0 17px;
+	border: 1px solid #ccc;
+	
+}
+
+input[type="checkbox"] {
+	
+
+	padding: 0 5px 0 0;
+	
+}
+
+
+
+
+select {
+	
+
+	width: 218px;
+	height: 22px;
+	margin: 0 0 3px 0;
+	padding: 0;
+	border: 1px solid #ccc;
+	
+}
+
+
+
+
+
+/* main content */
+#wrapper {
+	
+   width: 721px;
+   float: left;
+   
+}
+
+
+
+
+#content {
+	
+	width: 492px;
+	background-image:url(http://f.chtah.com/i/21/2075770726/071911_rodo_svy_ty_bdr_bg.gif);
+	background-position:bottom;
+	background-repeat:repeat-y;
+	padding: 0 152px 80px 77px;
+}
+
+#content textarea {
+	
+
+	width: 475px;
+	height: 45px;
+	margin-top: 6px;
+	border: 1px solid #ccc;
+	
+}
+
+
+
+#content .indent {
+
+	padding: 0 0 0 67px;
+	margin: 0;
+	
+	
+}
+
+#content .submit{
+
+	border: none;
+	margin-top: 24px;
+	
+	
+}
+
+
+#content p.question {
+
+	padding: 0 0 28px 46px;
+	
+}
+
+#content .normal {
+	
+	font-weight: normal;	
+}
+
+#content .col1 {
+	
+		
+		float: left;
+		clear: none;
+		margin: 0 0 44px 46px;
+	
+}
+
+#content .col2 {
+	
+		
+		width: 150px;
+		float: left;
+		clear: none;
+		margin: 0 0 44px 23px;
+	
+}
+
+#content label {
+	
+	
+		float: none;
+	
+}
+
+
+#content .col3 {
+	
+		
+		float: left;
+		clear: none;
+		margin: 0 0 44px 46px;
+		vertical-align: text-top;
+	
+}
+
+#content .col4 {
+	
+		
+		width: 150px;
+		float: left;
+		clear: none;
+		margin: 0 0 44px 23px;
+		vertical-align: text-top;
+	
+}
+
+#content .row {
+	
+
+	height: 25px;
+	
+	
+}
+
+</style>
+
+
+<script type="text/javascript">
+
+/***********************************************
+* Limit number of checked checkboxes script- by JavaScript Kit (www.javascriptkit.com)
+* This notice must stay intact for usage
+* Visit JavaScript Kit at http://www.javascriptkit.com/ for this script and 100s more
+***********************************************/
+
+function checkboxlimit(checkgroup, limit){
+	var checkgroup=checkgroup
+	var limit=limit
+	for (var i=0; i<checkgroup.length; i++){
+		checkgroup[i].onclick=function(){
+		var checkedcount=0
+		for (var i=0; i<checkgroup.length; i++)
+			checkedcount+=(checkgroup[i].checked)? 1 : 0
+		if (checkedcount>limit){
+			alert("You can only select a maximum of "+limit+" checkboxes")
+			this.checked=false
+			}
+		}
+	}
+}
+
+</script>
+
+</head>
+
+<body>
+<form name="RODOSurvey" action="" method="get">
+	
+<form action="http://surv.cheetahmail.com/s" method="post">
+<input type="hidden" name="n" value="9">
+<input type="hidden" name="aid" value="2075770726">
+<input type="hidden" name="a" value="1">
+<input type="hidden" name="t" value="%%t%%">
+<input type="hidden" name="o" value="1">
+
+<div id="wrapper">
+
+<div id="head">
+<img src="http://f.chtah.com/i/21/2075770726/071911_rodo_svy_ty_mn2.jpg" width="721" height="260" alt="">
+</div>
+
+
+<div id="content">
+
+
+<img src="http://f.chtah.com/i/21/2075770726/071911_rodo_svy_n1.jpg" width="27" height="27" alt="1." title="1." align="left"> <h1>You registered for Rogers On Demand Online but haven't been back since or signed in recently. Why not?</h1>
+
+
+<p class="question">
+<input type="radio" name="Q1" value="Q1_A1"> I was able to watch the programs I wanted without signing in<br>
+<input type="radio" name="Q1" value="Q1_A2"> I tried to sign in but had problems signing in<br>
+<input type="radio" name="Q1" value="Q1_A3"> I couldn't find programs that I wanted to watch
+<div class="indent">
+If so, tell us what you wanted to watch<br>
+<textarea></textarea><br>
+</div>
+
+</p>
+
+
+<br>
+
+
+<p class="question">
+<input type="radio" name="Q1" value="Q1_A4"> The website was difficult to use<br>
+<input type="radio" name="Q1" value="Q1_A5"> The video quality wasn't good<br>
+<input type="radio" name="Q1" value="Q1_A6"> The audio quality wasn't good<br>
+<input type="radio" name="Q1" value="Q1_A7"> I found another online website to watch TV instead<br>
+<input type="radio" name="Q1" value="Q1_A8"> I don't stream shows or videos online very often<br>
+<input type="radio" name="Q1" value="Q1_A9"> Other (please specify):<br>
+<input type="text" name="Q1_OTHER" value="">
+</p>
+
+
+
+<img src="http://f.chtah.com/i/21/2075770726/071911_rodo_svy_n2.jpg" width="27" height="27" alt="2." title="2." align="left"> <h1>Based on your experiences, what are the top 3 features that are important to you when watching movies, television and other programs online?<br> <span class="normal">(Select your top 3)</span></h1> 
+
+<p class="question">
+<input type="checkbox" name="Q2" value="Q2_A1"> Ease of finding and accessing videos and programs <br>
+<input type="checkbox" name="Q2" value="Q2_A2"> Ability to watch my favourite programming on one website<br>
+<input type="checkbox" name="Q2" value="Q2_A3"> Ease of registering and signing in<br>
+<input type="checkbox" name="Q2" value="Q2_A4"> Variety of programming available<br>
+<input type="checkbox" name="Q2" value="Q2_A5"> Number of videos/shows available for free<br>
+<input type="checkbox" name="Q2" value="Q2_A6"> Having the latest TV shows and movies<br>
+<input type="checkbox" name="Q2" value="Q2_A7"> Video quality (audio and video)
+
+<script type="text/javascript">
+
+//Syntax: checkboxlimit(checkbox_reference, limit)
+checkboxlimit(document.forms.RODOSurvey.Q2, 3)
+
+</script>
+
+
+</p>
+
+
+<img src="http://f.chtah.com/i/21/2075770726/071911_rodo_svy_n3.jpg" width="27" height="27" alt="3." title="3." align="left"> <h1>As we continue to develop Rogers On Demand Online and add new features, which of the following features would keep you coming back to watch videos on our website?<br> <span class="normal">(Select all that apply)</span></h1> 
+
+<p class="question">
+<input type="checkbox" name="Q3" value="Q3_A1"> Ability to watch on other devices such as mobile or gaming devices<br>
+<input type="checkbox" name="Q3" value="Q3_A2"> Live streaming of events (sports/concerts)<br>
+<input type="checkbox" name="Q3" value="Q3_A3"> More Hollywood new release movie rentals<br> 
+<input type="checkbox" name="Q3" value="Q3_A4"> Ability to personalize my Rogers On Demand Online homepage based on my viewing preferences<br>
+<input type="checkbox" name="Q3" value="Q3_A5"> Being provided with recommendations based on my viewing history<br>
+<input type="checkbox" name="Q3" value="Q3_A6"> More free TV shows<br>
+<input type="checkbox" name="Q3" value="Q3_A7"> Full seasons of TV shows<br>
+<input type="checkbox" name="Q3" value="Q3_A8"> More free movies<br>
+<input type="checkbox" name="Q3" value="Q3_A9"> Other (please specify):<br>
+<input type="text" name="Q3_OTHER" value="">
+
+</p>
+
+<img src="http://f.chtah.com/i/21/2075770726/071911_rodo_svy_n4.jpg" width="27" height="27" alt="4." title="4." align="left"> <h1>Which of the following online sites do you use to stream TV programming, sports or movies?<br> <span class="normal">(Select all that apply)</span></h1> 
+
+
+
+	<div class="col1">
+		<div>
+			<label><input name="Q4" type="checkbox" value="CTV"> CTV</label>
+		</div>
+		<div>
+			<label><input name="Q4" type="checkbox" value="Global"> Global</label>
+		</div>
+        <div>
+			<label><input name="Q4" type="checkbox" value="CBC"> CBC</label>
+		</div>
+        <div>
+			<label><input name="Q4" type="checkbox" value="CityTV"> CityTV</label>
+		</div>
+        <div>
+			<label><input name="Q4" type="checkbox" value="MTV"> MTV</label>
+		</div>
+        <div>
+			<label><input name="" type="checkbox" value="Other"> Other (Please specify):</label><br>
+            <input type="text" name="Q4_OTHER" value="">
+		</div>
+	</div>
+
+	<div class="col2">
+		<div>
+			<label><input name="Q4" type="checkbox" value="Netflix"> Netflix</label>
+		</div>
+		<div>
+			<label><input name="Q4" type="checkbox" value="Mega Video"> Mega Video</label>
+		</div>
+        <div>
+			<label><input name="Q4" type="checkbox" value="Project Free TV"> Project Free TV</label>
+		</div>
+        <div>
+			<label><input name="Q4" type="checkbox" value="Surf the Channel"> Surf the Channel</label>
+		</div>
+        <div>
+			<label><input name="Q4" type="checkbox" value="Sidereel"> Sidereel</label>
+		</div>
+	</div>
+
+
+<br clear="all">
+
+
+<h2>Please tell us a bit about yourself...</h2>
+
+<br>
+<img src="http://f.chtah.com/i/21/2075770726/071911_rodo_svy_n5.jpg" width="27" height="27" alt="5." title="5." align="left"> <h1>Where do you live?</h1>
+
+<p class="question">
+<select>
+<option>Select a Province</option>
+<option value="NL">Newfoundland and Labrador</option>
+<option value="PEI">Prince Edward Island</option>
+<option value="NS">Nova Scotia</option>
+<option value="NB">New Brunswick</option>
+<option value="QU">Quebec</option>
+<option value="ON">Ontario</option>
+<option value="MB">Manitoba</option>
+<option value="AB">Alberta</option>
+<option value="BC">British Columbia</option>
+<option value="YT">Yukon Territory</option>
+<option value="NT">Northwest Territories</option>
+<option value="NV">Nunavut</option>
+
+
+</select>
+</p>
+
+<img src="http://f.chtah.com/i/21/2075770726/071911_rodo_svy_n6.jpg" width="27" height="27" alt="6." title="6." align="left"> <h1>What's your gender?</h1>
+
+<p class="question">
+<input type="radio" name="GENDER" value="Male">  Male <input type="radio" name="GENDER" value="Female">  Female
+</p>
+
+<img src="http://f.chtah.com/i/21/2075770726/071911_rodo_svy_n7.jpg" width="27" height="27" alt="7." title="7." align="left"> <h1>What's your age?</h1>
+
+<p class="question">
+<select>
+	<option>Select your age</option>
+<option value="18_29">18 to 29 years</option>
+<option value="30_39">30 to 39 years</option>
+<option value="40_49">40 to 49 years</option>
+<option value="50_64">50 to 64 years</option>
+<option value="65">65 years or older</option>
+<option value="NA">Prefer not to say</option>
+
+
+</select>
+</p>
+
+<img src="http://f.chtah.com/i/21/2075770726/071911_rodo_svy_n8.jpg" width="27" height="27" alt="8." title="8." align="left"> <h1>Besides you, who else lives in your home?<br> <span class="normal">(Select one)</span></h1> 
+
+<p class="question">
+<select>
+<option value="18_30">I live alone</option>
+<option value="18_30">I live with roommates</option>
+<option value="18_30">I live alone with my kids </option>
+<option value="18_30">I live with my spouse / partner</option>
+<option value="18_30">I live with my spouse / partner and my kids </option>
+<option value="18_30">Other (please specify) </option>
+<option value="18_30">Prefer not to answer</option>
+
+</select>
+</p>
+
+
+<img src="http://f.chtah.com/i/21/2075770726/071911_rodo_svy_n9.jpg" width="27" height="27" alt="9." title="9." align="left"> <h1>Are there any children living in your household who are...?<br> <span class="normal">(Select all that apply)</span></h1>
+
+
+<p class="question">
+
+<input type="checkbox" name="Q9" value="under2"> Under 2 years of age<br>
+<input type="checkbox" name="Q9" value="2to5"> 2 to 5 years old<br>
+<input type="checkbox" name="Q9" value="6to11"> 6 to 11 years old<br>
+<input type="checkbox" name="Q9" value="12to17"> 12 to 17 years old<br>
+<input type="checkbox" name="Q9" value="18to24"> 18 to 24 years old<br>
+<input type="checkbox" name="Q9" value="25"> 25 years of age or older<br>
+<input type="checkbox" name="Q9" value="None"> None
+
+</p>
+
+<img src="http://f.chtah.com/i/21/2075770726/071911_rodo_svy_n10.jpg" width="27" height="27" alt="10." title="10." align="left"> <h1>Please select the company that provides your household with each one of the following services. If you don't subscribe to one of the services please select the option at the bottom of the list. <br> <span class="normal">(Please select one company per service type)</span></h1>
+
+
+
+<p class="question">
+	
+			<select>
+            	<option>Select One</option>
+                <option value="Cogeco">Cogeco</option>
+                <option value="Rogers">Rogers</option>
+                <option value="Shaw">Shaw</option>
+                <option value="TELUS">TELUS</option>
+                <option value="Videotron">Videotron</option>
+                <option value="Another company not listed">Another company not listed</option>
+                <option value="Do not subscribe to this service">Do not subscribe to this service</option>
+            </select>
+
+			
+</p>
+
+
+
+
+
+<input type="image" src="http://f.chtah.com/i/21/2075770726/071911_rodo_svy_ty_btn.gif" width="162" height="30" alt="Submit" title="Submit" class="submit" value="" name="">
+
+
+
+</div>
+
+
+<div id="footer">
+<img src="http://f.chtah.com/i/21/2075770726/071911_rodo_svy_ty_bt.gif" width="721" height="51" alt="">
+</div>
+
+</div>
+</form>
+</body>
+</html>
